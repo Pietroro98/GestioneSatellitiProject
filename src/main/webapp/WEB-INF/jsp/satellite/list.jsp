@@ -38,7 +38,7 @@
 		  
 		  		<div class='card'>
 				    <div class='card-header'>
-				        <h5>Lista dei risultati</h5> 
+				        <h5>${empty listTitle ? 'Lista dei risultati' : listTitle}</h5> 
 				    </div>
 				    <div class='card-body'>
 				    	<a class="btn btn-primary " href="${pageContext.request.contextPath}/satellite/insert">Add New</a>
@@ -81,6 +81,11 @@
 											</td>
 										</tr>
 									</c:forEach>
+									<c:if test="${empty satellite_list_attribute}">
+										<tr>
+											<td colspan="6">Nessun satellite trovato.</td>
+										</tr>
+									</c:if>
 				                </tbody>
 				            </table>
 				        </div>

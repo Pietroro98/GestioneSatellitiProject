@@ -26,4 +26,10 @@ public interface SatelliteService {
 	public boolean existsAnotherByDenominazione(String denominazione, Long id);
 
 	public boolean existsAnotherByCodice(String codice, Long id);
+
+	public List<Satellite> findLanciatiDaPiuDiDueAnniNonDisattivati();
+
+	public List<Satellite> findDisattivatiMaNonRientrati();
+
+	public List<Satellite> findInOrbitaDaDieciAnniEFissi();
 }

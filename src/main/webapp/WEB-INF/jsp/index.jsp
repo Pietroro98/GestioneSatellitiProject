@@ -7,7 +7,7 @@
 		<!-- Custom styles per le features di bootstrap 'Columns with icons' -->
 	   <link href="${pageContext.request.contextPath}/assets/css/features.css" rel="stylesheet" type="text/css">
 	   
-	   <title>Raccolta Film</title>
+	   <title>Gestione Satelliti</title>
 	 </head>
 	   <body class="d-flex flex-column h-100">
 	   		
@@ -64,6 +64,7 @@
 			  <!--  features di bootstrap 'Columns with icons'  -->
 			  <div class="container px-4 py-5" id="featured-3">
 			    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+
 			      <div class="feature col">
 			        <div class="feature-icon bg-primary bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
@@ -75,6 +76,7 @@
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
 			      </div>
+
 			      <div class="feature col">
 			        <div class="feature-icon bg-primary bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
@@ -86,17 +88,46 @@
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
 			      </div>
+
+			    </div>
+
+				<div class="row g-4 pb-5 row-cols-1 row-cols-lg-3">
+			      <div class="feature col">
+			        <div class="feature-icon bg-primary bg-gradient">
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
+			        </div>
+			        <h2>Lanciati da più di due anni</h2>
+			        <p>Mostra i satelliti lanciati da oltre due anni che non risultano disattivati.</p>
+			        <a href="${pageContext.request.contextPath}/satellite/lanciati-da-piu-di-due-anni" class="icon-link">
+			          Vai alla lista
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+			        </a>
+			      </div>
+
 			      <div class="feature col">
 			        <div class="feature-icon bg-primary bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
 			        </div>
-			        <h2>Altra Funzione</h2>
-			        <p>Esplora le altre funzionalità disponibili</p>
-			        <a href="#" class="icon-link">
-			          Vai alla funzionalit�
+			        <h2>Disattivati ma non rientrati</h2>
+			        <p>Mostra i satelliti disattivati che non hanno ancora una data di rientro valorizzata.</p>
+			        <a href="${pageContext.request.contextPath}/satellite/disattivati-ma-non-rientrati" class="icon-link">
+			          Vai alla lista
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
 			      </div>
+
+			      <div class="feature col">
+			        <div class="feature-icon bg-primary bg-gradient">
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
+			        </div>
+			        <h2>In orbita 10 anni e fissi</h2>
+			        <p>Mostra i satelliti in orbita da almeno dieci anni con stato attuale FISSO.</p>
+			        <a href="${pageContext.request.contextPath}/satellite/in-orbita-dieci-anni-fissi" class="icon-link">
+			          Vai alla lista
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+			        </a>
+			      </div>
+
 			    </div>
 			  </div>
 			  

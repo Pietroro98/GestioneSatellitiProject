@@ -45,8 +45,30 @@ public class SatelliteController {
 		return "satellite/search";
 	}
 
+	@GetMapping("/lanciati-da-piu-di-due-anni")
+	public String listLanciatiDaPiuDiDueAnni(ModelMap model) {
+		model.addAttribute("listTitle", "Satelliti lanciati da piu di due anni e non disattivati");
+		model.addAttribute("satellite_list_attribute", satelliteService.findLanciatiDaPiuDiDueAnniNonDisattivati());
+		return "satellite/list";
+	}
+
+	@GetMapping("/disattivati-ma-non-rientrati")
+	public String listDisattivatiMaNonRientrati(ModelMap model) {
+		model.addAttribute("listTitle", "Satelliti disattivati ma non rientrati");
+		model.addAttribute("satellite_list_attribute", satelliteService.findDisattivatiMaNonRientrati());
+		return "satellite/list";
+	}
+
+	@GetMapping("/in-orbita-dieci-anni-fissi")
+	public String listInOrbitaDaDieciAnniEFissi(ModelMap model) {
+		model.addAttribute("listTitle", "Satelliti rimasti in orbita 10 anni e ora fissi");
+		model.addAttribute("satellite_list_attribute", satelliteService.findInOrbitaDaDieciAnniEFissi());
+		return "satellite/list";
+	}
+
 	@PostMapping("/list")
 	public String listByExample(Satellite example, ModelMap model) {
+		model.addAttribute("listTitle", "Lista dei risultati");
 		List<Satellite> results = satelliteService.findByExample(example);
 		model.addAttribute("satellite_list_attribute", results);
 		return "satellite/list";

@@ -1,5 +1,6 @@
 package it.prova.gestioneimpiegati.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.prova.gestioneimpiegati.model.Satellite;
+import it.prova.gestioneimpiegati.model.StatoSatellite;
 import it.prova.gestioneimpiegati.repository.SatelliteRepository;
 
 @Service
@@ -80,6 +82,25 @@ public class SatelliteServiceImpl implements SatelliteService {
 	@Transactional(readOnly = true)
 	public boolean existsAnotherByCodice(String codice, Long id) {
 		return repository.existsByCodiceIgnoreCaseAndIdNot(codice, id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Satellite> findLanciatiDaPiuDiDueAnniNonDisattivati() {
+		return repository.findLanciatiDaPiuDiDueAnniNonDisattivati(LocalDateTime.now().minusYears(2),
+				StatoSatellite.DISATTIVATO);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Satellite> findDisattivatiMaNonRientrati() {
+		return repository.findByStatoAndDataRientroIsNullOrderByDenominazioneAsc(StatoSatellite.DISATTIVATO);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Satellite> findInOrbitaDaDieciAnniEFissi() {
+		return repository.findInOrbitaDaDieciAnniEFissi(LocalDateTime.now().minusYears(10), StatoSatellite.FISSO);
 	}
 
 	@Override
