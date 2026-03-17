@@ -60,6 +60,30 @@ public class SatelliteServiceImpl implements SatelliteService {
 
 	@Override
 	@Transactional(readOnly = true)
+	public Satellite findByDenominazione(String denominazione) {
+		return repository.findFirstByDenominazioneIgnoreCase(denominazione);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Satellite findByCodice(String codice) {
+		return repository.findFirstByCodiceIgnoreCase(codice);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public boolean existsAnotherByDenominazione(String denominazione, Long id) {
+		return repository.existsByDenominazioneIgnoreCaseAndIdNot(denominazione, id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public boolean existsAnotherByCodice(String codice, Long id) {
+		return repository.existsByCodiceIgnoreCaseAndIdNot(codice, id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
 	public List<Satellite> findByExample(Satellite example) {
 		Specification<Satellite> specificationCriteria = (root, query, cb) -> {
 

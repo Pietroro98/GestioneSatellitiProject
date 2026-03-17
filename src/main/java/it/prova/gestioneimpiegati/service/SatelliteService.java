@@ -18,4 +18,12 @@ public interface SatelliteService {
 	public List<Satellite> findByExample(Satellite example);
 	
 	public List<Satellite> cercaByDenominazioneECodiceILike(String denominazioneTerm, String codiceTerm);
+
+	public Satellite findByDenominazione(String denominazione);
+
+	public Satellite findByCodice(String codice);
+
+	public boolean existsAnotherByDenominazione(String denominazione, Long id);
+
+	public boolean existsAnotherByCodice(String codice, Long id);
 }
