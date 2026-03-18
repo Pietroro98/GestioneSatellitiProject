@@ -5,12 +5,27 @@
 <!doctype html>
 <html lang="it" class="h-100" >
 	 <head>
-	 
+		 <script src="${pageContext.request.contextPath}/assets/js/satellite-form.js"></script>
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
 		<style>
 			.error_field {
 				color: red;
+			}
+
+			.form-control:disabled,
+			.form-select:disabled {
+				opacity: 0.5;
+			}
+
+			.error-field {
+				color: red;
+				font-size: 0.9em;
+				display: none;
+			}
+
+			.input-error {
+				border: 1px solid red;
 			}
 		</style>
 
@@ -56,7 +71,7 @@
 									<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
 				
 				
-									<form:form modelAttribute="insert_satellite_attr" method="post" action="save" class="row g-3" novalidate="novalidate">
+									<form:form modelAttribute="insert_satellite_attr" method="post" action="save" class="row g-3" novalidate="novalidate" data-satellite-form="insert">
 									
 									
 										<div class="col-md-6">
@@ -90,15 +105,19 @@
 											<spring:bind path="dataRientro">
 												<input class="form-control ${status.error ? 'is-invalid' : ''}" id="dataRientro" type="datetime-local" placeholder="dd/MM/yy"
 													   title="formato : gg/mm/aaaa"  name="dataRientro"
-													   value="${not empty insert_satellite_attr.dataRientro ? fn:substring(insert_satellite_attr.dataRientro, 0, 16) : ''}" >
+													   value="${not empty insert_satellite_attr.dataRientro ? fn:substring(insert_satellite_attr.dataRientro, 0, 16) : ''}"
+													   disabled
+												>
 											</spring:bind>
 											<form:errors  path="dataRientro" cssClass="error_field" />
+											<span class="error-field" id="dataRientroError"></span>
 										</div>
+
 										
 										<div class="col-md-3">
 											<label for="stato" class="form-label">Stato</label>
 										    <spring:bind path="stato">
-											    <select class="form-select ${status.error ? 'is-invalid' : ''}" id="stato" name="stato">
+											    <select class="form-select ${status.error ? 'is-invalid' : ''}" id="stato" name="stato" disabled >
 											    	<option value="" selected> - Selezionare - </option>
 											    	<option value="IN_MOVIMENTO" ${insert_satellite_attr.stato == 'IN_MOVIMENTO'?'selected':''}>IN MOVIMENTO</option>
 											      	<option value="FISSO" ${insert_satellite_attr.stato == 'FISSO'?'selected':''}>FISSO</option>
@@ -110,7 +129,7 @@
 										
 										
 									<div class="col-12">
-										<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
+										<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary" disabled>Conferma</button>
 									</div>
 				
 								</form:form>
@@ -130,5 +149,6 @@
 			
 			<!-- Footer -->
 			<jsp:include page="../footer.jsp" />
+
 	  </body>
 </html>

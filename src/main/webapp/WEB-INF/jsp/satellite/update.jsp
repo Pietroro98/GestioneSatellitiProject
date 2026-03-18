@@ -5,12 +5,27 @@
 <!doctype html>
 <html lang="it" class="h-100" >
 	 <head>
-	 
+		 <script src="${pageContext.request.contextPath}/assets/js/satellite-form.js"></script>
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
 		<style>
 			.error_field {
 				color: red;
+			}
+
+			.form-control:disabled,
+			.form-select:disabled {
+				opacity: 0.5;
+			}
+
+			.error-field {
+				color: red;
+				font-size: 0.9em;
+				display: none;
+			}
+
+			.input-error {
+				border: 1px solid red;
 			}
 		</style>
 
@@ -45,7 +60,7 @@
 				
 									<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
 				
-									<form:form modelAttribute="update_satellite_attr" method="post" action="${pageContext.request.contextPath}/satellite/update" class="row g-3" novalidate="novalidate">
+									<form:form modelAttribute="update_satellite_attr" method="post" action="${pageContext.request.contextPath}/satellite/update" class="row g-3" novalidate="novalidate" data-satellite-form="update">
 										<form:hidden path="id"/>
 									
 										<div class="col-md-6">
@@ -82,6 +97,7 @@
 													   value="${not empty update_satellite_attr.dataRientro ? fn:substring(update_satellite_attr.dataRientro, 0, 16) : ''}">
 											</spring:bind>
 											<form:errors path="dataRientro" cssClass="error_field" />
+											<span class="error-field" id="dataRientroError"></span>
 										</div>
 
 										<div class="col-md-3">

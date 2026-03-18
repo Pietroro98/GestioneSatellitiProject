@@ -142,6 +142,8 @@
 					document.getElementById('confirmDeleteButton').setAttribute('href', deleteUrl);
 					document.getElementById('deleteModalItemLabel').textContent = deleteLabel;
 				});
+
+
 			});
 		</script>
 
